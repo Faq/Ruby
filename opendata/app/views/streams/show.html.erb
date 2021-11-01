@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @stream.date %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @stream.country %>
+</p>
+
+<p>
+  <strong>Twoweek cumulative:</strong>
+  <%= @stream.twoweek_cumulative %>
+</p>
+
+<p>
+  <strong>Departure:</strong>
+  <%= @stream.departure %>
+</p>
+
+<p>
+  <strong>Self isolation:</strong>
+  <%= @stream.self_isolation %>
+</p>
+
+<%= link_to 'Edit', edit_stream_path(@stream) %> |
+<%= link_to 'Back', streams_path %>
