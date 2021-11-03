@@ -9,4 +9,10 @@ class Stream < ApplicationRecord
 
     result
   end
+
+  validates :date, presence: true
+  validates :country, length: { minimum: 3 }, format: { with: /[a-zA-Z]/ }
+  validates :twoweek_cumulative, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :departure, :self_isolation, allow_blank: true, format: { with: /[a-zA-Z]/ }
+
 end

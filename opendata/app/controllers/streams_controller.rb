@@ -28,8 +28,9 @@ class StreamsController < ApplicationController
     @stream = Stream.new(stream_params)
 
     respond_to do |format|
-      if @stream.save
-        format.html { redirect_to @stream, notice: "Stream was successfully created." }
+      if @stream.valid?
+        @stream.save
+        format.html { redirect_to @stream, notice: 'Stream was successfully created.' }
         format.json { render :show, status: :created, location: @stream }
       else
         format.html { render :new, status: :unprocessable_entity }
