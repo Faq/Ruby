@@ -1,9 +1,8 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
+<br/>
+<h5>Last weeks COVID-19 cumulative data per country</h5>
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 <script>
     Chartkick.configure({language: "de", mapsApiKey: "AIzaSyCdp3V1xByg05oThQeNJVu-rUdI2K4f2KA"})
 </script>
-<%= geo_chart charts_completed_tasks_path, width: "1000px", height: "1116px" %>
+<%= geo_chart charts_completed_tasks_path, width: "1000px", height: "700px" %>
 
