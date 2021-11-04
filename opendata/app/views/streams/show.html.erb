@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div class="bg-light p-5 rounded-lg m-3">
 <p>
   <strong>Date:</strong>
   <%= @stream.date %>
@@ -25,5 +26,6 @@
   <%= @stream.self_isolation %>
 </p>
 
-<%= link_to 'Edit', edit_stream_path(@stream) %> |
-<%= link_to 'Back', streams_path %>
+<%= link_to 'Edit', edit_stream_path(@stream), class:"btn btn-primary m-1" %>
+<%= link_to 'Back', streams_path, class:"btn btn-primary m-1" %>
+</div>

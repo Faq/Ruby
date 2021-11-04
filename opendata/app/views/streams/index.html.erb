@@ -17,10 +17,10 @@
       <%= date_field_tag :to, params.dig(:date, :to_date), name: 'date[to_date]', class: 'form-control' %>
     </div>
   </div>
-
+<br/>
   <div class="form-group">
-    <%= submit_tag 'Search', class: 'btn btn-primary' %>
-    <%= link_to 'Clear', streams_path, class: 'btn btn-link' %>
+    <%= submit_tag 'Search', class: 'btn btn-primary m-1' %>
+    <%= link_to 'Clear', streams_path, class: 'btn btn-primary m-1' %>
   </div>
 <% end %>
 
@@ -46,9 +46,9 @@
         <td><%= stream.twoweek_cumulative %></td>
         <td><%= stream.departure %></td>
         <td><%= stream.self_isolation %></td>
-        <td><%= link_to 'Show', stream %></td>
-        <td><%= link_to 'Edit', edit_stream_path(stream) %></td>
-        <td><%= link_to 'Destroy', stream, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', stream, class: "btn btn-success btn-sm rounded-pill py-0 editLink" %></td>
+        <td><%= link_to 'Edit', edit_stream_path(stream), class: "btn btn-success btn-sm rounded-pill py-0 editLink" %></td>
+        <td><%= link_to 'Destroy', stream, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm rounded-pill py-0 deleteLink" %></td>
       </tr>
     <% end %>
   </tbody>

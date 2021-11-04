@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= form.datetime_select :date, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.text_field :country, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :twoweek_cumulative %>
-    <%= form.text_field :twoweek_cumulative %>
+    <%= form.text_field :twoweek_cumulative, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :departure %>
-    <%= form.text_field :departure %>
+    <%= form.text_field :departure, class:"form-control"%>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :self_isolation %>
-    <%= form.text_field :self_isolation %>
+    <%= form.text_field :self_isolation, class:"form-control" %>
   </div>
-
+  <br/>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary m-1" %>
   </div>
 <% end %>
