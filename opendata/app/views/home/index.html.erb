@@ -1,8 +1,10 @@
+<p class="fs-5 fw-bold text-center">Worlds COVID-19 cumulative data change per week</p>
+<%= area_chart charts_area_chart_tasks_path, ytitle: "14 day cumulative value", max: 25000, discrete: true, thousands: " ", round: 3 %>
 <br/>
-<h5>Last weeks COVID-19 cumulative data per country</h5>
+<p class="fs-5 fw-bold text-center">Last weeks COVID-19 cumulative data per country</p>
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 <script>
     Chartkick.configure({language: "de", mapsApiKey: "AIzaSyCdp3V1xByg05oThQeNJVu-rUdI2K4f2KA"})
 </script>
-<%= geo_chart charts_completed_tasks_path, width: "1000px", height: "700px" %>
+<%= geo_chart charts_geo_chart_tasks_path, width: "1000px", height: "700px"%>
 
