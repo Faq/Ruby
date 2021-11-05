@@ -1,4 +1,6 @@
 class Stream < ApplicationRecord
+  belongs_to :user
+
   scope :country, ->(query) { where('country ilike ?', "%#{query}%") }
 
   def self.by_date(from_date, to_date)
