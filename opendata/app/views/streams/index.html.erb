@@ -15,30 +15,31 @@
       <%= date_field_tag :to, params.dig(:date, :to_date), name: 'date[to_date]', class: 'form-control' %>
     </div>
   </div>
-<br/>
+  <br/>
   <div class="form-group">
     <%= submit_tag 'Search', class: 'btn btn-primary m-1' %>
     <%= link_to 'Clear', streams_path, class: 'btn btn-primary m-1' %>
   </div>
 <% end %>
 
-<table class="table">
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th>Id</th>
-      <th style="width: 8%">Date</th>
-      <th>Country</th>
-      <th>Two week cumulative</th>
-      <th>Departure</th>
-      <th>Self isolation</th>
-      <th colspan="3">Action</th>
-    </tr>
+  <tr>
+    <th style="width: 8%">Date</th>
+    <th>Country</th>
+    <th>Two week cumulative</th>
+    <th>Departure</th>
+    <th>Self isolation</th>
+    <% if user_signed_in? %>
+      <th colspan="3" style="width: 8%"></th>
+    <% end %>
+  </tr>
   </thead>
 
   <tbody>
-    <% @streams.each do |stream| %>
+  <% @streams.each do |stream| %>
+    <% if user_signed_in? && stream.user == current_user%>
       <tr>
-        <td><%= stream.id %></td>
         <td><%= stream.date.strftime("%Y-%m-%d") %></td>
         <td><%= stream.country %></td>
         <td><%= stream.twoweek_cumulative %></td>
@@ -48,7 +49,16 @@
         <td><%= link_to 'Edit', edit_stream_path(stream), class: "btn btn-success btn-sm rounded-pill py-0 editLink" %></td>
         <td><%= link_to 'Destroy', stream, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm rounded-pill py-0 deleteLink" %></td>
       </tr>
+    <% else %>
+      <tr>
+        <td><%= stream.date.strftime("%Y-%m-%d") %></td>
+        <td><%= stream.country %></td>
+        <td><%= stream.twoweek_cumulative %></td>
+        <td><%= stream.departure %></td>
+        <td><%= stream.self_isolation %></td>
+      </tr>
     <% end %>
+  <% end %>
   </tbody>
 </table>
 

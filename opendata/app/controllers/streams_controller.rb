@@ -1,5 +1,8 @@
 class StreamsController < ApplicationController
   before_action :set_stream, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :valid_user, only: [:edit, :update, :destroy]
+
 
   has_scope :country
   has_scope :by_date, type: :hash, using: [:from_date, :to_date], as: :date
@@ -16,7 +19,8 @@ class StreamsController < ApplicationController
 
   # GET /streams/new
   def new
-    @stream = Stream.new
+    #@stream = Stream.new
+    @stream = current_user.streams.build
   end
 
   # GET /streams/1/edit
@@ -25,7 +29,8 @@ class StreamsController < ApplicationController
 
   # POST /streams or /streams.json
   def create
-    @stream = Stream.new(stream_params)
+    #@stream = Stream.new(stream_params)
+    @stream = current_user.streams.build(stream_params)
 
     respond_to do |format|
       if @stream.valid?
@@ -61,6 +66,11 @@ class StreamsController < ApplicationController
     end
   end
 
+  def valid_user
+    @stream = current_user.streams.find_by(id: params[:id])
+    redirect_to streams_path, notice: "Not allowed to edit" if @stream.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stream
@@ -69,6 +79,6 @@ class StreamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stream_params
-      params.require(:stream).permit(:date, :country, :twoweek_cumulative, :departure, :self_isolation)
+      params.require(:stream).permit(:date, :country, :twoweek_cumulative, :departure, :self_isolation, :user_id)
     end
 end

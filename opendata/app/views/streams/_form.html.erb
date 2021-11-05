@@ -28,13 +28,18 @@
 
   <div class="field form-group">
     <%= form.label :departure %>
-    <%= form.text_field :departure, class:"form-control"%>
+    <%= form.text_field :departure, class:"form-control" %>
   </div>
 
   <div class="field form-group">
     <%= form.label :self_isolation %>
     <%= form.text_field :self_isolation, class:"form-control" %>
   </div>
+
+  <div class="field form-group">
+    <%= form.number_field :user_id, id: :stream_user_id, class:"form-control", type: :hidden, value: current_user.id %>
+  </div>
+
   <br/>
   <div class="actions">
     <%= form.submit class:"btn btn-primary m-1" %>
