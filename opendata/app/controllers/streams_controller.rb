@@ -3,8 +3,7 @@ class StreamsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :valid_user, only: [:edit, :update, :destroy]
 
-
-  has_scope :country
+  has_scope :by_country, as: :country
   has_scope :by_date, type: :hash, using: [:from_date, :to_date], as: :date
   has_scope :page, default: 1
   
@@ -72,13 +71,14 @@ class StreamsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stream
-      @stream = Stream.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def stream_params
-      params.require(:stream).permit(:date, :country, :twoweek_cumulative, :departure, :self_isolation, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_stream
+    @stream = Stream.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def stream_params
+    params.require(:stream).permit(:date, :country, :twoweek_cumulative, :departure, :self_isolation, :user_id)
+  end
 end
